@@ -1,25 +1,50 @@
-const data = {
-    cards: [
-        { 
-            imgPath: "./pathsomewhere.img",
-            imgAltText: "some alternate text",
-            title: "The Title",
-            body: "some kind of body of text",
-            actionLink: "https://localhost:5500/games/game.html"
+// index.html Smash Games - Home
+// blast.html Smash Games - Inferno Blast
+
+
+const Data = {
+    brandName: "Smash Games",
+    pages: [
+        {
+            name: "index",
+            pageName: "Home",
+            callToAction: {
+                src:"images/SmashGamesLogo-short.png",
+                altText: "Smash Games Logo"
+            }
+        },    
+        {
+            name: "about",
+            pageName: "About Us"
         },
-        { 
-            imgPath: "./pathsomewhere.img",
-            imgAltText: "some alternate text",
-            title: "The Title",
-            body: "some kind of body of text",
-            actionLink: "https://localhost:5500/games/game.html"
+        {
+            name: "games",
+            pageName: "Our Games",
+            pages: [
+                {
+                    name: "blast",
+                    pageName: "Inferno Blast",
+                    callToAction: {
+                        src:"images/Inferno-Jumbotron.png",
+                        altText: "Inferno Blast Gameplay",
+                        buttonLink: "https://steampowered.com"
+                    }
+                },
+                {
+                    name: "game2",
+                    pageName: "Super Charged!"
+                },
+                {
+                    name: "game3",
+                    pageName: "Starfighter Assult"
+                },
+            ],
         },
-        { 
-            imgPath: "./pathsomewhere.img",
-            imgAltText: "some alternate text",
-            title: "The Title",
-            body: "some kind of body of text",
-            actionLink: "https://localhost:5500/games/game.html"
+        {
+            name: "contact",
+            pageName: "Contact Us"
         },
     ]
+
+
 }
