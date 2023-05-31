@@ -22,10 +22,6 @@ const Data = {
             pageName: "Our Games",
             pages: [
                 {
-                    addEventListener
-                    1
-                    1
-                    
                     name: "blast",
                     pageName: "Inferno Blast",
                     callToAction: {
