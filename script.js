@@ -62,9 +62,97 @@ const Data = {
                                     description: "Face off against towering demon bosses, each with their own unique strengths and weaknesses." 
                                 },
                             ],
+                        },
+                    ],
+                },
+                {
+                    type: "requirement",
+                    platforms: [
+                        steam,
+                        playstation,
+                        xbox,
+                        facebook,
+                        twitter,
+                        instagram,
+                        patreon,
+                        twitch,
+                        youtube,
+                    ],
+                    requirements: [
+                        {
+                            type: "minimum-requirements",
+                            reqirements: [
+                                {title: "OS", value: "Win-7"},
+                                {title: "Processor", value: "Intel-I3 or Ryzen-3"},
+                                {title: "RAM", value: "8gb"},
+                                {title: "Graphics", value: "Geforce-GTX-570"},
+                                {title: "Storage", value: "1gb-HDD"}
+                            ]
+                        },
+                        {
+                            type: "Recommended Requirements",
+                            reqirements: [
+                                {title: "OS", value: "Win-11"},
+                                {title: "Processor", value: "Intel-I9 or Ryzen-7"},
+                                {title: "RAM", value: "16gb"},
+                                {title: "Graphics", value: "Geforce-RTX-2080"},
+                                {title: "Storage", value: "5gb-SSD"}
+                            ]
                         }
                     ],
-                    
+                },
+                {
+                    type: "Wishlist",
+                },
+                {
+                    type: "FAQ",
+                    questions: [
+                        {
+                            title: "Question One",
+                            text: [
+                                {
+                                    question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo earum quo a repellendus eligendi, dolore doloribus sequi recusandae nam eveniet dolorum, qui quidem id quam aspernatur, doloremque sint in? Nesciunt",
+                                    answer: "Nostrum illo explicabo fugiat architecto quos hic omnis iste velit quo corporis, maiores eaque. Fugiat voluptas voluptate officia quisquam veniam velit ad architecto? Soluta laboriosam commodi repellat aspernatur, vel excepturi."
+                                }
+                            ]
+                        },
+                        {
+                            title: "Question Two",
+                            text: [
+                                {
+                                    question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo earum quo a repellendus eligendi, dolore doloribus sequi recusandae nam eveniet dolorum, qui quidem id quam aspernatur, doloremque sint in? Nesciunt.",
+                                    answer: "Nostrum illo explicabo fugiat architecto quos hic omnis iste velit quo corporis, maiores eaque. Fugiat voluptas voluptate officia quisquam veniam velit ad architecto? Soluta laboriosam commodi repellat aspernatur, vel excepturi"
+                                }
+                            ] 
+                        },
+                        {
+                            title: "Question Three",
+                            text: [
+                                {
+                                    question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo earum quo a repellendus eligendi, dolore doloribus sequi recusandae nam eveniet dolorum, qui quidem id quam aspernatur, doloremque sint in? Nesciunt",
+                                    answer: "Nostrum illo explicabo fugiat architecto quos hic omnis iste velit quo corporis, maiores eaque. Fugiat voluptas voluptate officia quisquam veniam velit ad architecto? Soluta laboriosam commodi repellat aspernatur, vel excepturi."
+                                }
+                            ]
+                        },
+                        {
+                            title: "Question Four",
+                            text: [
+                                {
+                                    question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo earum quo a repellendus eligendi, dolore doloribus sequi recusandae nam eveniet dolorum, qui quidem id quam aspernatur, doloremque sint in? Nesciunt",
+                                    answer: "Nostrum illo explicabo fugiat architecto quos hic omnis iste velit quo corporis, maiores eaque. Fugiat voluptas voluptate officia quisquam veniam velit ad architecto? Soluta laboriosam commodi repellat aspernatur, vel excepturi."
+                                }
+                            ]
+                        },
+                        {
+                            title: "Question Five",
+                            text: [
+                                {
+                                    question: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo earum quo a repellendus eligendi, dolore doloribus sequi recusandae nam eveniet dolorum, qui quidem id quam aspernatur, doloremque sint in? Nesciunt.",
+                                    answer: "Nostrum illo explicabo fugiat architecto quos hic omnis iste velit quo corporis, maiores eaque. Fugiat voluptas voluptate officia quisquam veniam velit ad architecto? Soluta laboriosam commodi repellat aspernatur, vel excepturi."
+                                }
+                            ]
+                        }
+                    ]
                 },
                 {
                     name: "game2",
