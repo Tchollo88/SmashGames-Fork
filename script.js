@@ -2,8 +2,8 @@
 // blast.html Smash Games - Inferno Blast
 
 
-const Data = {
-    brandName: "Smash Games",
+const data = {
+    brandName: "Smashy Games",
     pages: [
         {
             name: "index",
@@ -68,15 +68,15 @@ const Data = {
                 {
                     type: "requirement",
                     platforms: [
-                        steam,
-                        playstation,
-                        xbox,
-                        facebook,
-                        twitter,
-                        instagram,
-                        patreon,
-                        twitch,
-                        youtube,
+                        "steam",
+                        "playstation",
+                        "xbox",
+                        "facebook",
+                        "twitter",
+                        "instagram",
+                        "patreon",
+                        "twitch",
+                        "youtube",
                     ],
                     requirements: [
                         {
@@ -169,4 +169,13 @@ const Data = {
             pageName: "Contact Us"
         },
     ]
+    
 }
+
+// we need a handle on the title
+let page = data.page[1];
+
+document.title = data.brandName + " - " + data.pages[1];
+
+// get access to the branding and change to data.brandName
+document.getElementById("brand").innerHTML = data.brandName.toLocaleUpperCase;
