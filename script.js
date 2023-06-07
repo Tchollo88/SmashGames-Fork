@@ -109,6 +109,9 @@ const data = {
 
 let page = data.pages[1];
 
+// get the main container
+let container = document.getElementById("main");
+
 document.title = data.brandName + " - " + page.pageName;
 // get access to the branding and change to data.brandName
 document.getElementById("brand").innerHTML = data.brandName.toUpperCase();
@@ -125,6 +128,26 @@ document.getElementById("pageName").innerHTML = page.pageName;
 </div> */
 
 createCallToAction(page.blocks[0]);
+createDiscription(page.blocks[1]);
+createDeck(page.block[2]);
+createRequirments(page.block[3]);
+createWishList(page.block[4]);
+createFAQ(page.block[5]);
+
+createPage(page.blocks);
+
+function creatPage(blocks) {
+    for (i = 0; i <blocks.length; i++) {
+        let currentBlock = blocks[i];
+        if (currentBlock.type == "call=to-action") {
+            createCallToAction(currentBlock);
+        } else if (currentBlock.type == "decription") {
+            createDiscription(currentBlock);
+        } else {
+            console.log("no block template found");
+        }
+    }
+}
 
 function createImage(imgData) {
     let img = document.createElement("img");
@@ -144,21 +167,129 @@ function createButtonLink(linkData) {
 }
 
 function createCallToAction(blockData) {
-    // get the main container
-    let container = document.getElementById("main");
-
     // create our block
     let block = document.createElement("div");
     block.classList.add("call-to-action");
     
     // add our image
     block.appendChild(createImage(blockData));
-    block.appendChild(createButtonLink(blockData));
     // add our break
     block.appendChild(document.createElement("br"));
     // add our call to action button
-
+    block.appendChild(createButtonLink(blockData));
+    // add our break
+    block.appendChild(document.createElement("br"));
 
     // add our block to main
     container.appendChild(block);
 }
+
+function createDiscription(blockData) {
+    // create our block
+    let block = document.createElement("div");
+    block.classList.add("description","block","accent-color");
+
+    // add some text here
+    let description = document.createElement("p")
+    block.classList.add("description-text");
+    description.innerText = blockData.text;
+    block.appendChild(description);
+
+    // add our block to main
+    container.appendChild(block);
+}
+
+// function createDeck(blockData) {
+//     // create our block
+//     let block = document.createElement("div");
+//     block.classList.add("features");
+//     // create our deck of cards
+//     createCard(page.block[0])
+//     // add our break
+//     block.appendChild(document.createElement("br"));
+//     // create our deck of cards
+//     createCard(page.block[1])
+//     // add our break
+//     block.appendChild(document.createElement("br"));
+//     // create our deck of cards
+//     createCard(page.block[2])
+//     // add our break
+//     block.appendChild(document.createElement("br"));
+
+//     // add our block to main
+//     container.appendChild(block);
+
+//     function createCard(blockData) {
+//         // create our block
+//         let block = document.createElement("div");
+//         block.classList.add("card");
+    
+//         // add our image
+//         block.appendChild(createImage(blockData));
+//         // add our break
+//         block.appendChild(document.createElement("br"));
+    
+//          // add title here
+//          let card = document.createElement("h3")
+//          block.classList.add("card-body");
+//          card.innerText = blockData.text;
+//          block.appendChild(card);
+//          // add our break
+//         block.appendChild(document.createElement("br"));
+    
+//          // add some text here
+//          let card = document.createElement("p")
+//          block.classList.add("card-body");
+//          card.innerText = blockData.text;
+//          block.appendChild(card);
+//          // add our break
+//         block.appendChild(document.createElement("br"));
+    
+//         // add our block to main
+//         container.appendChild(block);
+//     }
+// }
+
+// function createRequirements(blockData) {
+//     // create our block
+//     let block = document.createElement("div");
+//     block.classList.add("block","accent-color");
+
+//     // add some text here
+//     let requirements = document.createElement("li")
+//     block.classList.add("brand-list");
+//     requirements.innerText = blockData.text;
+//     block.appendChild(requirements);
+
+//     // add our block to main
+//     container.appendChild(block);
+// }
+
+// function createWishList(blockData) {
+//     // create our block
+//     let block = document.createElement("div");
+//     block.classList.add("description","block","accent-color");
+
+//     // add our block to main
+//     container.appendChild(block);
+// }
+
+// function createFAQ(blockData) {
+//     // create our block
+//     let block = document.createElement("div");
+//     block.classList.add("faq","block","accent-color");
+
+//     // add some text here
+//     let title = document.createElement("h1")
+//     block.classList.add("title");
+//     title.innerText = blockData.text;
+//     block.appendChild(title);
+
+//     let faq = document.createElement("h1")
+//     block.classList.add("title");
+//     faq.innerText = blockData.text;
+//     block.appendChild(faq);
+
+//     // add our block to main
+//     container.appendChild(block);
+// }
