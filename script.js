@@ -119,30 +119,19 @@ document.getElementById("brand").innerHTML = data.brandName.toUpperCase();
 // get access to the page title h1 and change it to page.pageName
 document.getElementById("pageName").innerHTML = page.pageName;
 
-// This is the code to create blocks
-
-/* <div class="call-to-action">
-    <img src="images/Inferno-Jumbotron.png" alt="Inferno Blast Gameplay" />
-    <br />
-    <a class="btn" href="https://steampowered.com" target="_blank">Buy Now on Steam! <i class="fa-brands fa-steam-symbol"></i></a>
-</div> */
-
-createCallToAction(page.blocks[0]);
-createDiscription(page.blocks[1]);
-createDeck(page.block[2]);
-createRequirments(page.block[3]);
-createWishList(page.block[4]);
-createFAQ(page.block[5]);
-
 createPage(page.blocks);
 
-function creatPage(blocks) {
+function createPage(blocks) {
     for (i = 0; i <blocks.length; i++) {
         let currentBlock = blocks[i];
-        if (currentBlock.type == "call=to-action") {
+        if (currentBlock.type == "call-to-action") {
             createCallToAction(currentBlock);
-        } else if (currentBlock.type == "decription") {
+        } else if (currentBlock.type == "description") {
             createDiscription(currentBlock);
+        } else if (currentBlock.type == "deck") {
+            createDeck(currentBlock);
+        } else if (currentBlock.type == "requirements") {
+            createReqs(currentBlock);
         } else {
             console.log("no block template found");
         }
@@ -199,97 +188,67 @@ function createDiscription(blockData) {
     container.appendChild(block);
 }
 
-// function createDeck(blockData) {
-//     // create our block
-//     let block = document.createElement("div");
-//     block.classList.add("features");
-//     // create our deck of cards
-//     createCard(page.block[0])
-//     // add our break
-//     block.appendChild(document.createElement("br"));
-//     // create our deck of cards
-//     createCard(page.block[1])
-//     // add our break
-//     block.appendChild(document.createElement("br"));
-//     // create our deck of cards
-//     createCard(page.block[2])
-//     // add our break
-//     block.appendChild(document.createElement("br"));
+function createDeck(blockData) {
+    // create our block
+    let block = document.createElement("div");
+    block.classList.add("features");
+    let deck = document.createElement("div");
+    deck.classList.add("deck");
+    block.appendChild(deck);
 
-//     // add our block to main
-//     container.appendChild(block);
+    //create our card
+    for (let i = 0; i < blockData.cards.length; i++) {
+        let card = document.createElement("div");
+        card.classList.add("card");
+        card.appendChild(createImage({
+            src: blockData.cards[i].src,
+            alt: blockData.cards[i].altText 
+        }));
+    
+        let body = document.createElement("div");
+        body.classList.add('card-body');
+        card.appendChild(body);
+        let title= document.createElement("h3");
+        title.innerHTML = blockData.cards[i].title; 
+        let text = document.createElement("p");
+        text.innerHTML = blockData.cards[i].body;
+    
+        body.appendChild(title);
+        body.appendChild(text);
+        deck.appendChild(card);
+    }
+    
 
-//     function createCard(blockData) {
-//         // create our block
-//         let block = document.createElement("div");
-//         block.classList.add("card");
+    // add our block to main
+    container.appendChild(block);
+}
+
+    function createReqs(blockData) {
+
+    // create a block
+    // let block = document.createElement("div");
+    // block.classList.add('"block","accent-color"');
+    // let platforms = document.createElement("div");
+    // platforms.classList.add('platforms');
+    // let lists = document.createElement("ul")
+    // lists.classLists.add('brand-list');
     
-//         // add our image
-//         block.appendChild(createImage(blockData));
-//         // add our break
-//         block.appendChild(document.createElement("br"));
-    
-//          // add title here
-//          let card = document.createElement("h3")
-//          block.classList.add("card-body");
-//          card.innerText = blockData.text;
-//          block.appendChild(card);
-//          // add our break
-//         block.appendChild(document.createElement("br"));
-    
-//          // add some text here
-//          let card = document.createElement("p")
-//          block.classList.add("card-body");
-//          card.innerText = blockData.text;
-//          block.appendChild(card);
-//          // add our break
-//         block.appendChild(document.createElement("br"));
-    
-//         // add our block to main
-//         container.appendChild(block);
+//     // create a list
+//     for (let i =0; i < blockData.lis.length; i++) {
+//             let icon = document.getElement("li");
+//             icon.appendChild(icon);
+//             icon.innerHTML = blockData.cards[i].title;
 //     }
-// }
 
-// function createRequirements(blockData) {
-//     // create our block
-//     let block = document.createElement("div");
-//     block.classList.add("block","accent-color");
+    let mbody = document.createElement("div");
+    mbody.classList.add('mreq');
+    let mtitle= document.createElement("h3");
+    mtitle.innerHTML = blockData.mreqs[i].title; 
+    let rbody = document.createElement("div");
+    rbody.classList.add('rreq');
+    let rtitle= document.createElement("h3");
+    rtitle.innerHTML = blockData.rreqs[i].title; 
+    
+    body.appendChild(block);
+} 
 
-//     // add some text here
-//     let requirements = document.createElement("li")
-//     block.classList.add("brand-list");
-//     requirements.innerText = blockData.text;
-//     block.appendChild(requirements);
-
-//     // add our block to main
-//     container.appendChild(block);
-// }
-
-// function createWishList(blockData) {
-//     // create our block
-//     let block = document.createElement("div");
-//     block.classList.add("description","block","accent-color");
-
-//     // add our block to main
-//     container.appendChild(block);
-// }
-
-// function createFAQ(blockData) {
-//     // create our block
-//     let block = document.createElement("div");
-//     block.classList.add("faq","block","accent-color");
-
-//     // add some text here
-//     let title = document.createElement("h1")
-//     block.classList.add("title");
-//     title.innerText = blockData.text;
-//     block.appendChild(title);
-
-//     let faq = document.createElement("h1")
-//     block.classList.add("title");
-//     faq.innerText = blockData.text;
-//     block.appendChild(faq);
-
-//     // add our block to main
-//     container.appendChild(block);
-// }
