@@ -92,7 +92,8 @@ const data = {
                     ]
                 },
                 {
-                    type: "wishlist"
+                    type: "wishlist",
+                    title: "Wishlist our game!"
                 },
                 {
                     type: "faq",
@@ -100,6 +101,8 @@ const data = {
                         { question: "What does this do?", answer: "stuff" },
                         { question: "What does that do?", answer: "that stuff" },
                         { question: "What does any of this do?", answer: "stuff i think" },
+                        {question: "What does any of this do?", answer: "stuff i think"},
+                        {question: "What does any of this do?", answer: "stuff i think"}
                     ]
                 }
             ],
@@ -132,6 +135,10 @@ function createPage(blocks) {
             createDeck(currentBlock);
         } else if (currentBlock.type == "requirements") {
             createReqs(currentBlock);
+        } else if (currentBlock.type == "wishlist") {
+            createWish(currentBlock);
+        } else if (currentBlock.type == "faq") {
+            createFAQ(currentBlock);
         } else {
             console.log("no block template found");
         }
@@ -223,32 +230,134 @@ function createDeck(blockData) {
     container.appendChild(block);
 }
 
-    function createReqs(blockData) {
+// create our requirements
+function createReqs(blockData) {
+    console.log("createReqs", blockData);
 
     // create a block
-    // let block = document.createElement("div");
-    // block.classList.add('"block","accent-color"');
-    // let platforms = document.createElement("div");
-    // platforms.classList.add('platforms');
-    // let lists = document.createElement("ul")
-    // lists.classLists.add('brand-list');
+    let block = document.createElement("div");
+    block.classList.add("block","accent-color");
+    let platforms = document.createElement("div");
+    block.classList.add('platforms');
+    block.appendChild(platforms);
+    let lists = document.createElement("ul")
+    lists.classList.add('brand-list');
+    platforms.appendChild(lists);
     
-//     // create a list
-//     for (let i =0; i < blockData.lis.length; i++) {
-//             let icon = document.getElement("li");
-//             icon.appendChild(icon);
-//             icon.innerHTML = blockData.cards[i].title;
-//     }
+    // create a list
+    for (let i = 0; i < blockData.platforms.length; i++) {
+            let icon = document.createElement("li");
+            let brand = document.createElement("i");
+            brand.classList.add("fa-brands",  "fa-" + blockData.platforms[i]);
+            lists.appendChild(icon);
+            icon.appendChild(brand);        
+    }
 
-    let mbody = document.createElement("div");
-    mbody.classList.add('mreq');
-    let mtitle= document.createElement("h3");
-    mtitle.innerHTML = blockData.mreqs[i].title; 
-    let rbody = document.createElement("div");
-    rbody.classList.add('rreq');
-    let rtitle= document.createElement("h3");
-    rtitle.innerHTML = blockData.rreqs[i].title; 
     
-    body.appendChild(block);
+    // stating requirements
+    let reqs = document.createElement("div");
+    reqs.classList.add("reqs");
+    block.appendChild(reqs);
+    
+    
+    
+
+    // //creating list
+    for (let i = 0; i < blockData.requirements.length; i++) {
+        let rblock = document.createElement("div");
+        reqs.appendChild(rblock);
+        let list = document.createElement("ul");
+        list.classList.add('list');
+        let title = document.createElement("h3");
+        title.innerText = blockData.requirements[i].title;
+        rblock.appendChild(title);
+        rblock.appendChild(list);
+    
+
+    //  // create listitems
+        for (let j = 0; j < blockData.requirements[i].requirements.length; j++) {
+            let build = document.createElement("li");
+            let heading = document.createElement("strong");
+            heading.innerHTML = blockData.requirements[i].requirements[j].title + ":  ";
+            build.appendChild(heading);
+            let val = document.createElement("span");
+            val.innerHTML = blockData.requirements[i].requirements[j].value;
+            build.appendChild(val);
+            list.appendChild(build);
+        }
+        
+    }
+    
+    
+    // add our block to main
+    container.appendChild(block);
 } 
 
+function createWish(blockData) {
+console.log(blockData);
+
+    // create our block
+    let block = document.createElement("div");
+    block.classList.add('wishlist-form');
+
+    // add title here
+    let title = document.createElement("h1");
+    title.innerHTML = blockData.title;
+    block.appendChild(title);
+
+    // add form
+    let form = document.createElement('form');
+    form.action = "wishlist.html";
+    let label = document.createElement("label");
+    label.for = "email";
+    label.innerText = "Your Email:";
+    form.appendChild(label);
+    let input = document.createElement("input");
+    input.type = "text";
+    input.name = "email";
+    input.placeholder = "you@site.com";
+    form.appendChild(input);
+    let btn = document.createElement("input");
+    btn.type = "submit";
+    form.appendChild(btn);
+
+    block.appendChild(form);
+    
+    // add our block to main
+    container.appendChild(block);
+}
+
+// create our FAQ
+function createFAQ(blockData) {
+    let block = document.createElement("div");
+    block.classList.add("faq", "block", "accent-color");
+    
+    // add title here
+    let ftitle = document.createElement("div");
+    ftitle.classList.add('title');
+    let title = document.createElement("h1");
+    title.innerText = "Frequently Asked Questions";
+    block.appendChild(title);
+
+    let qblock = document.createElement("div");
+    qblock.classList.add('q-block');
+    block.appendChild(qblock);
+
+    // create list
+    for (let i = 0; i < blockData.questions.length; i++) {
+        let qbody = document.createElement("div");
+        qbody.classList.add('question');
+        qblock.appendChild(qbody);
+        let qtitle = document.createElement("h3");
+        qtitle.innerText = blockData.questions[i].question;
+        let answer = document.createElement("p");
+        answer.classList.add('a');
+        answer.innerText = blockData.questions[i].answer;
+
+        qbody.appendChild(qtitle);
+        qbody.appendChild(answer);
+    }
+
+    // add our block to main
+    container.appendChild(block);
+}
